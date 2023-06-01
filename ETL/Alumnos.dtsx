@@ -1,0 +1,2219 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/30/2023 7:36:37 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ULIIUWU"
+  DTS:CreatorName="ULIIUWU\ulise"
+  DTS:DTSID="{5F763218-A430-4D68-A8A1-975397084138}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5209.0"
+  DTS:LocaleID="2058"
+  DTS:ObjectName="Alumnos"
+  DTS:PackageType="5"
+  DTS:VersionBuild="92"
+  DTS:VersionGUID="{1971BDEA-EA3E-4E9A-A7D9-6FB191AA4AA4}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[InputData]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{0B66EF44-0E4A-4909-B071-08AE630767C8}"
+      DTS:ObjectName="InputData">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="2058"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\ulises txt\Alumnos.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="StudentID"
+              DTS:DTSID="{FB07C354-1352-439D-8B6F-85ADB893034B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="StudenCode"
+              DTS:DTSID="{652923E6-49AD-420C-B9A2-CF1AB55EBDD6}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="FullName"
+              DTS:DTSID="{7DBAA9FD-738F-417D-8BD3-2C2FDDCE8A59}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TemporalGrade"
+              DTS:DTSID="{5FAC6899-654A-41C7-9B1C-D4D735A84210}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="GroupCode"
+              DTS:DTSID="{5A7F02A8-ADDE-4F79-BE3B-B8254AEF804F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Dual"
+              DTS:DTSID="{6B9E355E-A127-4AC1-A78A-3FB2D77A2336}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A358F6C4-A67E-4A4B-8E43-DCB059D8852C}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="Count">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0C91878F-CA4C-48EC-91DD-1D00C9FAF7CD}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="CountLoop">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F8CD38BD-C399-4F5F-9972-A0ED6224C3BB}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="Data">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{000BB1E6-B34D-46A3-817F-F2EF6799C370}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="IsDataAvailable">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3CDB0F82-87E5-4054-A3FD-57B17F4F0124}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="MaxLoop">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{6278629E-E324-4508-A8EA-2FE79B6F2398}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="StudentCode">
+      <DTS:VariableValue
+        DTS:DataType="8">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Loading data"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Contenedor de secuencias"
+      DTS:DTSID="{D6E824BC-D724-4B15-9387-1DF33BD0ABF1}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Loading data">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Loading data\Data Flow Task"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{B8803B72-8B88-4CE2-900D-6587A98C1028}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Data Flow Task"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Loading data\Data Flow Task\Flat File Source"
+                  componentClassID="Microsoft.FlatFileSource"
+                  contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Flat File Source"
+                  localeId="2058"
+                  name="Flat File Source"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether zero-length columns are treated as null."
+                      name="RetainNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                      name="FileNameColumnName"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Loading data\Data Flow Task\Flat File Source.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[InputData]"
+                      connectionManagerRefId="Package.ConnectionManagers[InputData]"
+                      name="FlatFileConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Loading data\Data Flow Task\Flat File Source.Outputs[Flat File Source Output]"
+                      name="Flat File Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Loading data\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[StudentID]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Loading data\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[StudentID]"
+                          length="50"
+                          lineageId="Package\Loading data\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[StudentID]"
+                          name="StudentID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loading data\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[StudenCode]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Loading data\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[StudenCode]"
+                          length="50"
+                          lineageId="Package\Loading data\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[StudenCode]"
+                          name="StudenCode"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loading data\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[FullName]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Loading data\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[FullName]"
+                          length="50"
+                          lineageId="Package\Loading data\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[FullName]"
+                          name="FullName"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loading data\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[TemporalGrade]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Loading data\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[TemporalGrade]"
+                          length="50"
+                          lineageId="Package\Loading data\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[TemporalGrade]"
+                          name="TemporalGrade"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loading data\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[GroupCode]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Loading data\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[GroupCode]"
+                          length="50"
+                          lineageId="Package\Loading data\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[GroupCode]"
+                          name="GroupCode"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loading data\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[Dual]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\Loading data\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Dual]"
+                          length="50"
+                          lineageId="Package\Loading data\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[Dual]"
+                          name="Dual"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Loading data\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[StudentID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="StudentID" />
+                        <externalMetadataColumn
+                          refId="Package\Loading data\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[StudenCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="StudenCode" />
+                        <externalMetadataColumn
+                          refId="Package\Loading data\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[FullName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="FullName" />
+                        <externalMetadataColumn
+                          refId="Package\Loading data\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[TemporalGrade]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="TemporalGrade" />
+                        <externalMetadataColumn
+                          refId="Package\Loading data\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[GroupCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="GroupCode" />
+                        <externalMetadataColumn
+                          refId="Package\Loading data\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Dual]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Dual" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Loading data\Data Flow Task\Flat File Source.Outputs[Flat File Source Error Output]"
+                      isErrorOut="true"
+                      name="Flat File Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Loading data\Data Flow Task\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          codePage="1252"
+                          dataType="text"
+                          description="Flat File Source Error Output Column"
+                          lineageId="Package\Loading data\Data Flow Task\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          name="Flat File Source Error Output Column" />
+                        <outputColumn
+                          refId="Package\Loading data\Data Flow Task\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Loading data\Data Flow Task\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Loading data\Data Flow Task\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Loading data\Data Flow Task\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Loading data\Data Flow Task\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[tc_students]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Loading data\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="{901B4B69-1367-40E5-976F-1DC83626CB25}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[ULIIUWU_SQLEXPRESS.UTVT]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Loading data\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="IgnoreFailure"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Loading data\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[StudentID]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="StudentID"
+                          externalMetadataColumnId="Package\Loading data\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StudentID]"
+                          lineageId="Package\Loading data\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[StudentID]" />
+                        <inputColumn
+                          refId="Package\Loading data\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FullName]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="FullName"
+                          externalMetadataColumnId="Package\Loading data\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FullName]"
+                          lineageId="Package\Loading data\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[FullName]" />
+                        <inputColumn
+                          refId="Package\Loading data\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TemporalGrade]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="TemporalGrade"
+                          externalMetadataColumnId="Package\Loading data\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TemporalGrade]"
+                          lineageId="Package\Loading data\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[TemporalGrade]" />
+                        <inputColumn
+                          refId="Package\Loading data\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[GroupCode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="GroupCode"
+                          externalMetadataColumnId="Package\Loading data\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[GroupCode]"
+                          lineageId="Package\Loading data\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[GroupCode]" />
+                        <inputColumn
+                          refId="Package\Loading data\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Dual]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Dual"
+                          externalMetadataColumnId="Package\Loading data\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Dual]"
+                          lineageId="Package\Loading data\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[Dual]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Loading data\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StudentID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="StudentID" />
+                        <externalMetadataColumn
+                          refId="Package\Loading data\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StudentCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="StudentCode" />
+                        <externalMetadataColumn
+                          refId="Package\Loading data\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FullName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="FullName" />
+                        <externalMetadataColumn
+                          refId="Package\Loading data\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TemporalGrade]"
+                          dataType="i4"
+                          name="TemporalGrade" />
+                        <externalMetadataColumn
+                          refId="Package\Loading data\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[GroupCode]"
+                          dataType="i4"
+                          name="GroupCode" />
+                        <externalMetadataColumn
+                          refId="Package\Loading data\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Dual]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Dual" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Loading data\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Loading data\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Loading data\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Loading data\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Loading data\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Loading data\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Loading data\Data Flow Task\Row Count"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="Row Count">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::Count</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\Loading data\Data Flow Task\Row Count.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Loading data\Data Flow Task\Row Count.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\Loading data\Data Flow Task\Row Count.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Loading data\Data Flow Task.Paths[Flat File Source Output]"
+                  endId="Package\Loading data\Data Flow Task\Row Count.Inputs[Row Count Input 1]"
+                  name="Flat File Source Output"
+                  startId="Package\Loading data\Data Flow Task\Flat File Source.Outputs[Flat File Source Output]" />
+                <path
+                  refId="Package\Loading data\Data Flow Task.Paths[Row Count Output 1]"
+                  endId="Package\Loading data\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="Row Count Output 1"
+                  startId="Package\Loading data\Data Flow Task\Row Count.Outputs[Row Count Output 1]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Loading data\Set tables"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Tarea Ejecutar SQL"
+          DTS:DTSID="{3ABD6BEE-5158-464F-9B08-A2DEE7BBEAF5}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Set tables"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{901B4B69-1367-40E5-976F-1DC83626CB25}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE  tc_students;&#xA;TRUNCATE TABLE  tc_not_aproved;&#xA;TRUNCATE TABLE  tc_errors;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Loading data.PrecedenceConstraints[Restricción]"
+          DTS:CreationName=""
+          DTS:DTSID="{AE23B38D-361E-42DD-8E9A-4E0C64AD66F9}"
+          DTS:From="Package\Loading data\Set tables"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Restricción"
+          DTS:To="Package\Loading data\Data Flow Task" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Not approved"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Contenedor de secuencias"
+      DTS:DTSID="{5926BF37-8B89-4FB6-901F-5B85C2475B71}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Not approved">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Not approved\Contenedor de bucles For"
+          DTS:AssignExpression="@[User::CountLoop] = @[User::CountLoop] + 1"
+          DTS:CreationName="STOCK:FORLOOP"
+          DTS:Description="Contenedor de bucles For"
+          DTS:DTSID="{D27C2595-E57E-4C09-A1FC-ED3580AF90D1}"
+          DTS:EvalExpression="@[User::CountLoop] &lt;= @[User::MaxLoop] &amp;&amp; @[User::IsDataAvailable] &gt;0"
+          DTS:ExecutableType="STOCK:FORLOOP"
+          DTS:InitExpression="@[User::CountLoop] = 1"
+          DTS:LocaleID="-1"
+          DTS:MaxConcurrent="1"
+          DTS:ObjectName="Contenedor de bucles For">
+          <DTS:Variables />
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Not approved\Contenedor de bucles For\Data"
+              DTS:CreationName="Microsoft.Pipeline"
+              DTS:Description="Data Flow Task"
+              DTS:DTSID="{E42BE19B-4631-482A-8ADE-E8C3803215AF}"
+              DTS:ExecutableType="Microsoft.Pipeline"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Data"
+              DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <pipeline
+                  version="1">
+                  <components>
+                    <component
+                      refId="Package\Not approved\Contenedor de bucles For\Data\Balanced Data Distributor"
+                      componentClassID="Microsoft.BDD"
+                      contactInfo="Balanced Data Distributor;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                      description="Evaluates and directs rows in a dataset to multiple destinations."
+                      name="Balanced Data Distributor">
+                      <inputs>
+                        <input
+                          refId="Package\Not approved\Contenedor de bucles For\Data\Balanced Data Distributor.Inputs[Balanced Data Distributor Input]"
+                          description="Input to the Balanced Data  Distributor Transformation"
+                          name="Balanced Data Distributor Input">
+                          <externalMetadataColumns />
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output
+                          refId="Package\Not approved\Contenedor de bucles For\Data\Balanced Data Distributor.Outputs[Balanced Data Distributor Output 3]"
+                          deleteOutputOnPathDetached="true"
+                          exclusionGroup="1"
+                          name="Balanced Data Distributor Output 3"
+                          synchronousInputId="Package\Not approved\Contenedor de bucles For\Data\Balanced Data Distributor.Inputs[Balanced Data Distributor Input]">
+                          <externalMetadataColumns />
+                        </output>
+                        <output
+                          refId="Package\Not approved\Contenedor de bucles For\Data\Balanced Data Distributor.Outputs[Balanced Data Distributor Output 1]"
+                          deleteOutputOnPathDetached="true"
+                          exclusionGroup="1"
+                          name="Balanced Data Distributor Output 1"
+                          synchronousInputId="Package\Not approved\Contenedor de bucles For\Data\Balanced Data Distributor.Inputs[Balanced Data Distributor Input]">
+                          <externalMetadataColumns />
+                        </output>
+                        <output
+                          refId="Package\Not approved\Contenedor de bucles For\Data\Balanced Data Distributor.Outputs[Balanced Data Distributor Output 2]"
+                          dangling="true"
+                          deleteOutputOnPathDetached="true"
+                          exclusionGroup="1"
+                          name="Balanced Data Distributor Output 2"
+                          synchronousInputId="Package\Not approved\Contenedor de bucles For\Data\Balanced Data Distributor.Inputs[Balanced Data Distributor Input]">
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                    <component
+                      refId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination"
+                      componentClassID="Microsoft.OLEDBDestination"
+                      contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                      description="OLE DB Destination"
+                      name="OLE DB Destination"
+                      usesDispositions="true"
+                      version="4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                          name="CommandTimeout">0</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the name of the database object used to open a rowset."
+                          name="OpenRowset">[dbo].[tc_not_aproved]</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the variable that contains the name of the database object used to open a rowset."
+                          name="OpenRowsetVariable"></property>
+                        <property
+                          dataType="System.String"
+                          description="The SQL command to be executed."
+                          name="SqlCommand"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the column code page to use when code page information is unavailable from the data source."
+                          name="DefaultCodePage">1252</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Forces the use of the DefaultCodePage property value when describing character data."
+                          name="AlwaysUseDefaultCodePage">false</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the mode used to access the database."
+                          name="AccessMode"
+                          typeConverter="AccessMode">3</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                          name="FastLoadKeepIdentity">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                          name="FastLoadKeepNulls">false</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                          name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                          name="FastLoadMaxInsertCommitSize">2147483647</property>
+                      </properties>
+                      <connections>
+                        <connection
+                          refId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination.Connections[OleDbConnection]"
+                          connectionManagerID="{901B4B69-1367-40E5-976F-1DC83626CB25}:external"
+                          connectionManagerRefId="Project.ConnectionManagers[ULIIUWU_SQLEXPRESS.UTVT]"
+                          description="The OLE DB runtime connection used to access the database."
+                          name="OleDbConnection" />
+                      </connections>
+                      <inputs>
+                        <input
+                          refId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                          errorOrTruncationOperation="Insert"
+                          errorRowDisposition="RedirectRow"
+                          hasSideEffects="true"
+                          name="OLE DB Destination Input">
+                          <inputColumns>
+                            <inputColumn
+                              refId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[StudentCode]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="50"
+                              cachedName="StudentCode"
+                              externalMetadataColumnId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StudentCode]"
+                              lineageId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[StudentCode]" />
+                          </inputColumns>
+                          <externalMetadataColumns
+                            isUsed="True">
+                            <externalMetadataColumn
+                              refId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StudentCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="50"
+                              name="StudentCode" />
+                          </externalMetadataColumns>
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output
+                          refId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                          exclusionGroup="1"
+                          isErrorOut="true"
+                          name="OLE DB Destination Error Output"
+                          synchronousInputId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                    <component
+                      refId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination 1"
+                      componentClassID="Microsoft.OLEDBDestination"
+                      contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                      description="OLE DB Destination"
+                      name="OLE DB Destination 1"
+                      usesDispositions="true"
+                      version="4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                          name="CommandTimeout">0</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the name of the database object used to open a rowset."
+                          name="OpenRowset">[dbo].[tc_not_aproved]</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the variable that contains the name of the database object used to open a rowset."
+                          name="OpenRowsetVariable"></property>
+                        <property
+                          dataType="System.String"
+                          description="The SQL command to be executed."
+                          name="SqlCommand"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the column code page to use when code page information is unavailable from the data source."
+                          name="DefaultCodePage">1252</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Forces the use of the DefaultCodePage property value when describing character data."
+                          name="AlwaysUseDefaultCodePage">false</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the mode used to access the database."
+                          name="AccessMode"
+                          typeConverter="AccessMode">3</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                          name="FastLoadKeepIdentity">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                          name="FastLoadKeepNulls">false</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                          name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                          name="FastLoadMaxInsertCommitSize">2147483647</property>
+                      </properties>
+                      <connections>
+                        <connection
+                          refId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination 1.Connections[OleDbConnection]"
+                          connectionManagerID="{901B4B69-1367-40E5-976F-1DC83626CB25}:external"
+                          connectionManagerRefId="Project.ConnectionManagers[ULIIUWU_SQLEXPRESS.UTVT]"
+                          description="The OLE DB runtime connection used to access the database."
+                          name="OleDbConnection" />
+                      </connections>
+                      <inputs>
+                        <input
+                          refId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination 1.Inputs[OLE DB Destination Input]"
+                          errorOrTruncationOperation="Insert"
+                          errorRowDisposition="RedirectRow"
+                          hasSideEffects="true"
+                          name="OLE DB Destination Input">
+                          <inputColumns>
+                            <inputColumn
+                              refId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[StudentCode]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="50"
+                              cachedName="StudentCode"
+                              externalMetadataColumnId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[StudentCode]"
+                              lineageId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[StudentCode]" />
+                          </inputColumns>
+                          <externalMetadataColumns
+                            isUsed="True">
+                            <externalMetadataColumn
+                              refId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[StudentCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="50"
+                              name="StudentCode" />
+                          </externalMetadataColumns>
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output
+                          refId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination 1.Outputs[OLE DB Destination Error Output]"
+                          exclusionGroup="1"
+                          isErrorOut="true"
+                          name="OLE DB Destination Error Output"
+                          synchronousInputId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination 1.Inputs[OLE DB Destination Input]">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                    <component
+                      refId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination 2"
+                      componentClassID="Microsoft.OLEDBDestination"
+                      contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                      description="OLE DB Destination"
+                      name="OLE DB Destination 2"
+                      usesDispositions="true"
+                      version="4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                          name="CommandTimeout">0</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the name of the database object used to open a rowset."
+                          name="OpenRowset">[dbo].[tc_errors]</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the variable that contains the name of the database object used to open a rowset."
+                          name="OpenRowsetVariable"></property>
+                        <property
+                          dataType="System.String"
+                          description="The SQL command to be executed."
+                          name="SqlCommand"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the column code page to use when code page information is unavailable from the data source."
+                          name="DefaultCodePage">1252</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Forces the use of the DefaultCodePage property value when describing character data."
+                          name="AlwaysUseDefaultCodePage">false</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the mode used to access the database."
+                          name="AccessMode"
+                          typeConverter="AccessMode">3</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                          name="FastLoadKeepIdentity">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                          name="FastLoadKeepNulls">false</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                          name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                          name="FastLoadMaxInsertCommitSize">2147483647</property>
+                      </properties>
+                      <connections>
+                        <connection
+                          refId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination 2.Connections[OleDbConnection]"
+                          connectionManagerID="{901B4B69-1367-40E5-976F-1DC83626CB25}:external"
+                          connectionManagerRefId="Project.ConnectionManagers[ULIIUWU_SQLEXPRESS.UTVT]"
+                          description="The OLE DB runtime connection used to access the database."
+                          name="OleDbConnection" />
+                      </connections>
+                      <inputs>
+                        <input
+                          refId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination 2.Inputs[OLE DB Destination Input]"
+                          errorOrTruncationOperation="Insert"
+                          errorRowDisposition="FailComponent"
+                          hasSideEffects="true"
+                          name="OLE DB Destination Input">
+                          <inputColumns>
+                            <inputColumn
+                              refId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination 2.Inputs[OLE DB Destination Input].Columns[StudentCode]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="50"
+                              cachedName="StudentCode"
+                              externalMetadataColumnId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination 2.Inputs[OLE DB Destination Input].ExternalColumns[StudentCode]"
+                              lineageId="Package\Not approved\Contenedor de bucles For\Data\Union All.Outputs[Union All Output 1].Columns[StudentCode]" />
+                          </inputColumns>
+                          <externalMetadataColumns
+                            isUsed="True">
+                            <externalMetadataColumn
+                              refId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination 2.Inputs[OLE DB Destination Input].ExternalColumns[StudentCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="50"
+                              name="StudentCode" />
+                          </externalMetadataColumns>
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output
+                          refId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination 2.Outputs[OLE DB Destination Error Output]"
+                          exclusionGroup="1"
+                          isErrorOut="true"
+                          name="OLE DB Destination Error Output"
+                          synchronousInputId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination 2.Inputs[OLE DB Destination Input]">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination 2.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination 2.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination 2.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination 2.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                    <component
+                      refId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Source"
+                      componentClassID="Microsoft.OLEDBSource"
+                      contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                      description="OLE DB Source"
+                      name="OLE DB Source"
+                      usesDispositions="true"
+                      version="7">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                          name="CommandTimeout">0</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the name of the database object used to open a rowset."
+                          name="OpenRowset">[dbo].[tc_not_aproved]</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the variable that contains the name of the database object used to open a rowset."
+                          name="OpenRowsetVariable"></property>
+                        <property
+                          dataType="System.String"
+                          description="The SQL command to be executed."
+                          name="SqlCommand"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT TOP (2) StudentCode From tc_students s WHERE NOT EXISTS 
+(
+	SELECT StudentCode FROM tc_not_aproved  n WHERE n.StudentCode = s.StudentCode 
+) AND s.TemporalGrade &lt;8</property>
+                        <property
+                          dataType="System.String"
+                          description="The variable that contains the SQL command to be executed."
+                          name="SqlCommandVariable"></property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the column code page to use when code page information is unavailable from the data source."
+                          name="DefaultCodePage">1252</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Forces the use of the DefaultCodePage property value when describing character data."
+                          name="AlwaysUseDefaultCodePage">false</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the mode used to access the database."
+                          name="AccessMode"
+                          typeConverter="AccessMode">2</property>
+                        <property
+                          dataType="System.String"
+                          description="The mappings between the parameters in the SQL command and variables."
+                          name="ParameterMapping"></property>
+                      </properties>
+                      <connections>
+                        <connection
+                          refId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Source.Connections[OleDbConnection]"
+                          connectionManagerID="{901B4B69-1367-40E5-976F-1DC83626CB25}:external"
+                          connectionManagerRefId="Project.ConnectionManagers[ULIIUWU_SQLEXPRESS.UTVT]"
+                          description="The OLE DB runtime connection used to access the database."
+                          name="OleDbConnection" />
+                      </connections>
+                      <outputs>
+                        <output
+                          refId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Source.Outputs[OLE DB Source Output]"
+                          name="OLE DB Source Output">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[StudentCode]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StudentCode]"
+                              length="50"
+                              lineageId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[StudentCode]"
+                              name="StudentCode"
+                              truncationRowDisposition="FailComponent" />
+                          </outputColumns>
+                          <externalMetadataColumns
+                            isUsed="True">
+                            <externalMetadataColumn
+                              refId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StudentCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="50"
+                              name="StudentCode" />
+                          </externalMetadataColumns>
+                        </output>
+                        <output
+                          refId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                          isErrorOut="true"
+                          name="OLE DB Source Error Output">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StudentCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="50"
+                              lineageId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StudentCode]"
+                              name="StudentCode" />
+                            <outputColumn
+                              refId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                    <component
+                      refId="Package\Not approved\Contenedor de bucles For\Data\Union All"
+                      componentClassID="Microsoft.UnionAll"
+                      contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                      description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+                      name="Union All"
+                      version="1">
+                      <inputs>
+                        <input
+                          refId="Package\Not approved\Contenedor de bucles For\Data\Union All.Inputs[Union All Input 1]"
+                          name="Union All Input 1">
+                          <inputColumns>
+                            <inputColumn
+                              refId="Package\Not approved\Contenedor de bucles For\Data\Union All.Inputs[Union All Input 1].Columns[StudentCode]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="50"
+                              cachedName="StudentCode"
+                              lineageId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[StudentCode]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\Not approved\Contenedor de bucles For\Data\Union All.Outputs[Union All Output 1].Columns[StudentCode]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\Not approved\Contenedor de bucles For\Data\Union All.Inputs[Union All Input 1].Columns[ErrorCode]"
+                              cachedDataType="i4"
+                              cachedName="ErrorCode"
+                              lineageId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\Not approved\Contenedor de bucles For\Data\Union All.Outputs[Union All Output 1].Columns[ErrorCode]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\Not approved\Contenedor de bucles For\Data\Union All.Inputs[Union All Input 1].Columns[ErrorColumn]"
+                              cachedDataType="i4"
+                              cachedName="ErrorColumn"
+                              lineageId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\Not approved\Contenedor de bucles For\Data\Union All.Outputs[Union All Output 1].Columns[ErrorColumn]}</property>
+                              </properties>
+                            </inputColumn>
+                          </inputColumns>
+                          <externalMetadataColumns />
+                        </input>
+                        <input
+                          refId="Package\Not approved\Contenedor de bucles For\Data\Union All.Inputs[Union All Input 2]"
+                          hasSideEffects="true"
+                          name="Union All Input 2">
+                          <inputColumns>
+                            <inputColumn
+                              refId="Package\Not approved\Contenedor de bucles For\Data\Union All.Inputs[Union All Input 2].Columns[StudentCode]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="50"
+                              cachedName="StudentCode"
+                              lineageId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[StudentCode]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\Not approved\Contenedor de bucles For\Data\Union All.Outputs[Union All Output 1].Columns[StudentCode]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\Not approved\Contenedor de bucles For\Data\Union All.Inputs[Union All Input 2].Columns[ErrorCode]"
+                              cachedDataType="i4"
+                              cachedName="ErrorCode"
+                              lineageId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\Not approved\Contenedor de bucles For\Data\Union All.Outputs[Union All Output 1].Columns[ErrorCode]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\Not approved\Contenedor de bucles For\Data\Union All.Inputs[Union All Input 2].Columns[ErrorColumn]"
+                              cachedDataType="i4"
+                              cachedName="ErrorColumn"
+                              lineageId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\Not approved\Contenedor de bucles For\Data\Union All.Outputs[Union All Output 1].Columns[ErrorColumn]}</property>
+                              </properties>
+                            </inputColumn>
+                          </inputColumns>
+                          <externalMetadataColumns />
+                        </input>
+                        <input
+                          refId="Package\Not approved\Contenedor de bucles For\Data\Union All.Inputs[Union All Input 3]"
+                          dangling="true"
+                          hasSideEffects="true"
+                          name="Union All Input 3">
+                          <externalMetadataColumns />
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output
+                          refId="Package\Not approved\Contenedor de bucles For\Data\Union All.Outputs[Union All Output 1]"
+                          name="Union All Output 1">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Not approved\Contenedor de bucles For\Data\Union All.Outputs[Union All Output 1].Columns[StudentCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="50"
+                              lineageId="Package\Not approved\Contenedor de bucles For\Data\Union All.Outputs[Union All Output 1].Columns[StudentCode]"
+                              name="StudentCode" />
+                            <outputColumn
+                              refId="Package\Not approved\Contenedor de bucles For\Data\Union All.Outputs[Union All Output 1].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\Not approved\Contenedor de bucles For\Data\Union All.Outputs[Union All Output 1].Columns[ErrorCode]"
+                              name="ErrorCode" />
+                            <outputColumn
+                              refId="Package\Not approved\Contenedor de bucles For\Data\Union All.Outputs[Union All Output 1].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\Not approved\Contenedor de bucles For\Data\Union All.Outputs[Union All Output 1].Columns[ErrorColumn]"
+                              name="ErrorColumn" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                  </components>
+                  <paths>
+                    <path
+                      refId="Package\Not approved\Contenedor de bucles For\Data.Paths[Balanced Data Distributor Output 1]"
+                      endId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination 1.Inputs[OLE DB Destination Input]"
+                      name="Balanced Data Distributor Output 1"
+                      startId="Package\Not approved\Contenedor de bucles For\Data\Balanced Data Distributor.Outputs[Balanced Data Distributor Output 1]" />
+                    <path
+                      refId="Package\Not approved\Contenedor de bucles For\Data.Paths[Balanced Data Distributor Output 3]"
+                      endId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      name="Balanced Data Distributor Output 3"
+                      startId="Package\Not approved\Contenedor de bucles For\Data\Balanced Data Distributor.Outputs[Balanced Data Distributor Output 3]" />
+                    <path
+                      refId="Package\Not approved\Contenedor de bucles For\Data.Paths[OLE DB Destination Error Output]"
+                      endId="Package\Not approved\Contenedor de bucles For\Data\Union All.Inputs[Union All Input 1]"
+                      name="OLE DB Destination Error Output"
+                      startId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination.Outputs[OLE DB Destination Error Output]" />
+                    <path
+                      refId="Package\Not approved\Contenedor de bucles For\Data.Paths[OLE DB Destination Error Output1]"
+                      endId="Package\Not approved\Contenedor de bucles For\Data\Union All.Inputs[Union All Input 2]"
+                      name="OLE DB Destination Error Output"
+                      startId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination 1.Outputs[OLE DB Destination Error Output]" />
+                    <path
+                      refId="Package\Not approved\Contenedor de bucles For\Data.Paths[OLE DB Source Output]"
+                      endId="Package\Not approved\Contenedor de bucles For\Data\Balanced Data Distributor.Inputs[Balanced Data Distributor Input]"
+                      name="OLE DB Source Output"
+                      startId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Source.Outputs[OLE DB Source Output]" />
+                    <path
+                      refId="Package\Not approved\Contenedor de bucles For\Data.Paths[Union All Output 1]"
+                      endId="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination 2.Inputs[OLE DB Destination Input]"
+                      name="Union All Output 1"
+                      startId="Package\Not approved\Contenedor de bucles For\Data\Union All.Outputs[Union All Output 1]" />
+                  </paths>
+                </pipeline>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Not approved\Contenedor de bucles For\Get available data"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Tarea Ejecutar SQL"
+              DTS:DTSID="{E98C4C5D-96F6-4383-9163-557ACE60FF55}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Get available data"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{901B4B69-1367-40E5-976F-1DC83626CB25}"
+                  SQLTask:SqlStatementSource="SELECT COUNT(StudentCode) AS IsDataAvailable FROM tc_students s WHERE NOT EXISTS (SELECT StudentCode FROM tc_not_aproved n WHERE n.StudentCode = s.StudentCode) AND s.TemporalGrade &lt; 8;"
+                  SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ResultBinding
+                    SQLTask:ResultName=" IsDataAvailable"
+                    SQLTask:DtsVariableName="User::IsDataAvailable" />
+                  <SQLTask:ResultBinding
+                    SQLTask:ResultName="NewResultName"
+                    SQLTask:DtsVariableName="User::Count" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:PrecedenceConstraints>
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Not approved\Contenedor de bucles For.PrecedenceConstraints[Restricción]"
+              DTS:CreationName=""
+              DTS:DTSID="{FE32A94E-A233-40BB-ADC1-54E31A2874C3}"
+              DTS:From="Package\Not approved\Contenedor de bucles For\Data"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Restricción"
+              DTS:To="Package\Not approved\Contenedor de bucles For\Get available data" />
+          </DTS:PrecedenceConstraints>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Not approved\Set MaxLoop"
+          DTS:CreationName="Microsoft.ExpressionTask"
+          DTS:Description="Tarea de expresión"
+          DTS:DTSID="{419002DD-430A-4577-B8F8-FE6C5C58126B}"
+          DTS:ExecutableType="Microsoft.ExpressionTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Set MaxLoop"
+          DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExpressionTask
+              Expression="@[User::MaxLoop] = (@[User::Count] / 2) + 1" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Not approved.PrecedenceConstraints[Restricción]"
+          DTS:CreationName=""
+          DTS:DTSID="{0D939B30-8ED5-4995-83E1-45C7758A56AD}"
+          DTS:From="Package\Not approved\Set MaxLoop"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Restricción"
+          DTS:To="Package\Not approved\Contenedor de bucles For" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update grades"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Contenedor de secuencias"
+      DTS:DTSID="{4848E3C9-741F-4BB7-A769-DB6715C92E7D}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update grades">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Update grades\Contenedor de bucles Foreach"
+          DTS:CreationName="STOCK:FOREACHLOOP"
+          DTS:Description="Contenedor de bucles Foreach"
+          DTS:DTSID="{05D97C04-21BE-458E-9F80-DF0F14BDF18C}"
+          DTS:ExecutableType="STOCK:FOREACHLOOP"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Contenedor de bucles Foreach">
+          <DTS:ForEachEnumerator
+            DTS:CreationName="Microsoft.ForEachFileEnumerator"
+            DTS:DTSID="{E6887CF1-6B92-48A2-B198-41DC5FF8ED8C}"
+            DTS:ObjectName="{E6887CF1-6B92-48A2-B198-41DC5FF8ED8C}">
+            <DTS:ObjectData>
+              <ForEachFileEnumeratorProperties>
+                <FEFEProperty
+                  Folder="C:\" />
+                <FEFEProperty
+                  FileSpec="*.*" />
+                <FEFEProperty
+                  FileNameRetrievalType="0" />
+                <FEFEProperty
+                  Recurse="0" />
+              </ForEachFileEnumeratorProperties>
+            </DTS:ObjectData>
+          </DTS:ForEachEnumerator>
+          <DTS:Variables />
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Update grades\Contenedor de bucles Foreach\Update record"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Tarea Ejecutar SQL"
+              DTS:DTSID="{771EE81F-DE0C-4CBD-B3F7-7711EF55C818}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Update record"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{901B4B69-1367-40E5-976F-1DC83626CB25}"
+                  SQLTask:SqlStatementSource="UPDATE  tc_students SET TemporalGrade = 10 WHERE StudentCode = ?;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="0"
+                    SQLTask:DtsVariableName="User::StudentCode"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="129"
+                    SQLTask:ParameterSize="-1" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:ForEachVariableMappings>
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{4B0FA58C-BC62-476E-9550-DECC7E8C1707}"
+              DTS:ObjectName="{4B0FA58C-BC62-476E-9550-DECC7E8C1707}"
+              DTS:ValueIndex="0"
+              DTS:VariableName="User::Data" />
+          </DTS:ForEachVariableMappings>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Update grades\Get data"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Tarea Ejecutar SQL"
+          DTS:DTSID="{0F452DC9-1ECB-4A85-B40D-74B1D8AD0371}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Get data"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{901B4B69-1367-40E5-976F-1DC83626CB25}"
+              SQLTask:SqlStatementSource="SELECT StudentCode FROM tc_students WHERE Dual = 'Yes'; "
+              SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::Data" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Update grades.PrecedenceConstraints[Restricción]"
+          DTS:CreationName=""
+          DTS:DTSID="{FE99F606-8632-4BC1-9E65-BCD6B2DB00D7}"
+          DTS:From="Package\Update grades\Get data"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Restricción"
+          DTS:To="Package\Update grades\Contenedor de bucles Foreach" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción]"
+      DTS:CreationName=""
+      DTS:DTSID="{61A2317F-DF9B-4E2D-9245-48589017D182}"
+      DTS:From="Package\Loading data"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción"
+      DTS:To="Package\Update grades" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{48B6D6B2-CB2F-4656-AB73-27543C86DDDA}"
+      DTS:From="Package\Update grades"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 1"
+      DTS:To="Package\Not approved" />
+  </DTS:PrecedenceConstraints>
+  <DTS:EventHandlers>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnError]"
+      DTS:CreationName="OnError"
+      DTS:DTSID="{C33E8FAA-31B0-445E-85D5-FFB8620A5BCB}"
+      DTS:EventID="0"
+      DTS:EventName="OnError"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{5A9D45FC-870C-43B0-AD41-B19153253110}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables />
+    </DTS:EventHandler>
+  </DTS:EventHandlers>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Loading data\Data Flow Task"
+          TopLeft="58,134" />
+        <NodeLayout
+          Size="128,42"
+          Id="Package\Loading data\Set tables"
+          TopLeft="40,22" />
+        <EdgeLayout
+          Id="Package\Loading data.PrecedenceConstraints[Restricción]"
+          TopLeft="104,64">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="31.5,70"
+              Start="0,0"
+              End="31.5,62.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31"
+                    Point2="0,35"
+                    Point3="4,35" />
+                  <mssgle:LineSegment
+                    End="27.5,35" />
+                  <mssgle:CubicBezierSegment
+                    Point1="27.5,35"
+                    Point2="31.5,35"
+                    Point3="31.5,39" />
+                  <mssgle:LineSegment
+                    End="31.5,62.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="284,231"
+          Size="284,274"
+          Id="Package\Loading data"
+          TopLeft="83,123" />
+        <NodeLayout
+          Size="102,42"
+          Id="Package\Not approved\Contenedor de bucles For\Data"
+          TopLeft="84,8" />
+        <NodeLayout
+          Size="168,42"
+          Id="Package\Not approved\Contenedor de bucles For\Get available data"
+          TopLeft="58,114" />
+        <EdgeLayout
+          Id="Package\Not approved\Contenedor de bucles For.PrecedenceConstraints[Restricción]"
+          TopLeft="138.5,50">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,64"
+              Start="0,0"
+              End="0,56.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,56.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="288,208"
+          Size="288,251"
+          Id="Package\Not approved\Contenedor de bucles For"
+          TopLeft="16,132.222222222222" />
+        <NodeLayout
+          Size="144,42"
+          Id="Package\Not approved\Set MaxLoop"
+          TopLeft="68.8888888888889,6.77777777777779" />
+        <EdgeLayout
+          Id="Package\Not approved.PrecedenceConstraints[Restricción]"
+          TopLeft="140.888888888889,48.7777777777778">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="19.1111111111111,83.4444444444442"
+              Start="0,0"
+              End="19.1111111111111,75.9444444444442">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.7222222222221" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,37.7222222222221"
+                    Point2="0,41.7222222222221"
+                    Point3="4,41.7222222222221" />
+                  <mssgle:LineSegment
+                    End="15.1111111111111,41.7222222222221" />
+                  <mssgle:CubicBezierSegment
+                    Point1="15.1111111111111,41.7222222222221"
+                    Point2="19.1111111111111,41.7222222222221"
+                    Point3="19.1111111111111,45.7222222222221" />
+                  <mssgle:LineSegment
+                    End="19.1111111111111,75.9444444444442" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="309,439"
+          Size="309,482"
+          Id="Package\Not approved"
+          TopLeft="920,52" />
+        <NodeLayout
+          Size="149,42"
+          Id="Package\Update grades\Contenedor de bucles Foreach\Update record"
+          TopLeft="41,26" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="255,123"
+          Size="255,166"
+          Id="Package\Update grades\Contenedor de bucles Foreach"
+          TopLeft="19,131" />
+        <NodeLayout
+          Size="121,42"
+          Id="Package\Update grades\Get data"
+          TopLeft="89,15" />
+        <EdgeLayout
+          Id="Package\Update grades.PrecedenceConstraints[Restricción]"
+          TopLeft="148,57">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,74"
+              Start="0,0"
+              End="0,66.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,66.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="303,352"
+          Size="303,395"
+          Id="Package\Update grades"
+          TopLeft="458,58" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción]"
+          TopLeft="367,257.75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="91,0"
+              Start="0,0"
+              End="83.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="83.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 1]"
+          TopLeft="761,255.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="159,37.5"
+              Start="0,0"
+              End="151.5,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="75.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="75.5,0"
+                    Point2="79.5,0"
+                    Point3="79.5,4" />
+                  <mssgle:LineSegment
+                    End="79.5,33.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="79.5,33.5"
+                    Point2="79.5,37.5"
+                    Point3="83.5,37.5" />
+                  <mssgle:LineSegment
+                    End="151.5,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Loading data\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="133,42"
+          Id="Package\Loading data\Data Flow Task\Row Count"
+          TopLeft="329.5,190.5" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Loading data\Data Flow Task\Flat File Source"
+          TopLeft="314,61" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Loading data\Data Flow Task\OLE DB Destination"
+          TopLeft="312.5,298.5" />
+        <EdgeLayout
+          Id="Package\Loading data\Data Flow Task.Paths[Row Count Output 1]"
+          TopLeft="398.5,232.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,66"
+              Start="0,0"
+              End="0,58.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,58.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-16.42453125,24.35107421875,32.8490625,9.7978515625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading data\Data Flow Task.Paths[Flat File Source Output]"
+          TopLeft="394,103">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,87.5"
+              Start="0,0"
+              End="0,80">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,80" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-16.42453125,35.10107421875,32.8490625,9.7978515625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Loading data\Data Flow Task\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Not approved\Contenedor de bucles For\Data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="123,42"
+          Id="Package\Not approved\Contenedor de bucles For\Data\Union All"
+          TopLeft="588.181818181818,376.363636363636" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Not approved\Contenedor de bucles For\Data\OLE DB Source"
+          TopLeft="569.070707070707,75.4747474747475" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination 2"
+          TopLeft="264.545454545455,416.363636363636" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination 1"
+          TopLeft="753.636363636364,233.636363636364" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination"
+          TopLeft="370,239.090909090909" />
+        <NodeLayout
+          Size="204,42"
+          Id="Package\Not approved\Contenedor de bucles For\Data\Balanced Data Distributor"
+          TopLeft="536.161616161616,161.111111111111" />
+        <EdgeLayout
+          Id="Package\Not approved\Contenedor de bucles For\Data.Paths[Union All Output 1]"
+          TopLeft="588.181818181818,397.363636363636">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-137.636363636364,40.0000000000001"
+              Start="0,0"
+              End="-130.136363636364,40.0000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-64.8181818181818,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-64.8181818181818,0"
+                    Point2="-68.8181818181818,0"
+                    Point3="-68.8181818181818,4" />
+                  <mssgle:LineSegment
+                    End="-68.8181818181818,36.0000000000001" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-68.8181818181818,36.0000000000001"
+                    Point2="-68.8181818181818,40.0000000000001"
+                    Point3="-72.8181818181818,40.0000000000001" />
+                  <mssgle:LineSegment
+                    End="-130.136363636364,40.0000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Not approved\Contenedor de bucles For\Data.Paths[OLE DB Source Output]"
+          TopLeft="647.570707070707,117.474747474748">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-9.40909090909099,43.6363636363635"
+              Start="0,0"
+              End="-9.40909090909099,36.1363636363635">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.8181818181817" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.8181818181817"
+                    Point2="0,21.8181818181817"
+                    Point3="-4,21.8181818181817" />
+                  <mssgle:LineSegment
+                    End="-5.40909090909099,21.8181818181817" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-5.40909090909099,21.8181818181817"
+                    Point2="-9.40909090909099,21.8181818181817"
+                    Point3="-9.40909090909099,25.8181818181817" />
+                  <mssgle:LineSegment
+                    End="-9.40909090909099,36.1363636363635" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Not approved\Contenedor de bucles For\Data.Paths[OLE DB Destination Error Output1]"
+          TopLeft="846.636363636364,275.636363636364">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-177.787878787879,100.727272727273"
+              Start="0,0"
+              End="-177.787878787879,93.2272727272727">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,55.6602947614183" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,55.6602947614183"
+                    Point2="0,59.6602947614183"
+                    Point3="-4,59.6602947614183" />
+                  <mssgle:LineSegment
+                    End="-173.787878787879,59.6602947614183" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-173.787878787879,59.6602947614183"
+                    Point2="-177.787878787879,59.6602947614183"
+                    Point3="-177.787878787879,63.6602947614183" />
+                  <mssgle:LineSegment
+                    End="-177.787878787879,93.2272727272727" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-162.10284564394,64.6602947614183,146.4178125,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Not approved\Contenedor de bucles For\Data.Paths[OLE DB Destination Error Output]"
+          TopLeft="458.5,281.090909090909">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="191.181818181818,95.2727272727273"
+              Start="0,0"
+              End="191.181818181818,87.7727272727273">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.6363636363636" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,43.6363636363636"
+                    Point2="0,47.6363636363636"
+                    Point3="4,47.6363636363636" />
+                  <mssgle:LineSegment
+                    End="187.181818181818,47.6363636363636" />
+                  <mssgle:CubicBezierSegment
+                    Point1="187.181818181818,47.6363636363636"
+                    Point2="191.181818181818,47.6363636363636"
+                    Point3="191.181818181818,51.6363636363636" />
+                  <mssgle:LineSegment
+                    End="191.181818181818,87.7727272727273" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="22.382002840909,52.6363636363636,146.4178125,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Not approved\Contenedor de bucles For\Data.Paths[Balanced Data Distributor Output 3]"
+          TopLeft="605.494949494949,203.111111111111">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-146.994949494949,35.979797979798"
+              Start="0,0"
+              End="-146.994949494949,28.479797979798">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.5599182486342" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.5599182486342"
+                    Point2="0,14.5599182486342"
+                    Point3="-4,14.5599182486342" />
+                  <mssgle:LineSegment
+                    End="-142.994949494949,14.5599182486342" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-142.994949494949,14.5599182486342"
+                    Point2="-146.994949494949,14.5599182486342"
+                    Point3="-146.994949494949,18.5599182486342" />
+                  <mssgle:LineSegment
+                    End="-146.994949494949,28.479797979798" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-151.320111466225,19.5599182486342,155.6452734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Not approved\Contenedor de bucles For\Data.Paths[Balanced Data Distributor Output 1]"
+          TopLeft="670.828282828283,203.111111111111">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="175.808080808081,30.525252525253"
+              Start="0,0"
+              End="175.808080808081,23.025252525253">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,8.35263137208682" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,8.35263137208682"
+                    Point2="0,12.3526313720868"
+                    Point3="4,12.3526313720868" />
+                  <mssgle:LineSegment
+                    End="171.808080808081,12.3526313720868" />
+                  <mssgle:CubicBezierSegment
+                    Point1="171.808080808081,12.3526313720868"
+                    Point2="175.808080808081,12.3526313720868"
+                    Point3="175.808080808081,16.3526313720868" />
+                  <mssgle:LineSegment
+                    End="175.808080808081,23.025252525253" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="10.2034739977905,17.3526313720868,155.4011328125,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Not approved\Contenedor de bucles For\Data\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination 2">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination 1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Not approved\Contenedor de bucles For\Data\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
