@@ -11,8 +11,8 @@
   DTS:LocaleID="2058"
   DTS:ObjectName="Alumnos"
   DTS:PackageType="5"
-  DTS:VersionBuild="92"
-  DTS:VersionGUID="{1971BDEA-EA3E-4E9A-A7D9-6FB191AA4AA4}">
+  DTS:VersionBuild="113"
+  DTS:VersionGUID="{A6764713-C316-4E96-97E0-3FCF20F2A6BF}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -135,7 +135,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="IsDataAvailable">
       <DTS:VariableValue
-        DTS:DataType="3">0</DTS:VariableValue>
+        DTS:DataType="3">1</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -144,7 +144,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="MaxLoop">
       <DTS:VariableValue
-        DTS:DataType="3">0</DTS:VariableValue>
+        DTS:DataType="3">10</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -526,6 +526,14 @@
                           cachedName="Dual"
                           externalMetadataColumnId="Package\Loading data\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Dual]"
                           lineageId="Package\Loading data\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[Dual]" />
+                        <inputColumn
+                          refId="Package\Loading data\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[StudenCode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="StudenCode"
+                          externalMetadataColumnId="Package\Loading data\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StudentCode]"
+                          lineageId="Package\Loading data\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[StudenCode]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -679,7 +687,7 @@
           DTS:CreationName="STOCK:FORLOOP"
           DTS:Description="Contenedor de bucles For"
           DTS:DTSID="{D27C2595-E57E-4C09-A1FC-ED3580AF90D1}"
-          DTS:EvalExpression="@[User::CountLoop] &lt;= @[User::MaxLoop] &amp;&amp; @[User::IsDataAvailable] &gt;0"
+          DTS:EvalExpression="@[User::CountLoop] &lt; @[User::MaxLoop] &amp;&amp; @[User::IsDataAvailable] &gt;0"
           DTS:ExecutableType="STOCK:FORLOOP"
           DTS:InitExpression="@[User::CountLoop] = 1"
           DTS:LocaleID="-1"
@@ -1402,10 +1410,7 @@
                   SQLTask:SqlStatementSource="SELECT COUNT(StudentCode) AS IsDataAvailable FROM tc_students s WHERE NOT EXISTS (SELECT StudentCode FROM tc_not_aproved n WHERE n.StudentCode = s.StudentCode) AND s.TemporalGrade &lt; 8;"
                   SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
                   <SQLTask:ResultBinding
-                    SQLTask:ResultName=" IsDataAvailable"
-                    SQLTask:DtsVariableName="User::IsDataAvailable" />
-                  <SQLTask:ResultBinding
-                    SQLTask:ResultName="NewResultName"
+                    SQLTask:ResultName="IsDataAvailable"
                     SQLTask:DtsVariableName="User::Count" />
                 </SQLTask:SqlTaskData>
               </DTS:ObjectData>
@@ -1469,20 +1474,13 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Contenedor de bucles Foreach">
           <DTS:ForEachEnumerator
-            DTS:CreationName="Microsoft.ForEachFileEnumerator"
-            DTS:DTSID="{E6887CF1-6B92-48A2-B198-41DC5FF8ED8C}"
-            DTS:ObjectName="{E6887CF1-6B92-48A2-B198-41DC5FF8ED8C}">
+            DTS:CreationName="Microsoft.ForEachADOEnumerator"
+            DTS:DTSID="{DEE0833B-6679-42E1-A3BE-BC8974DF881F}"
+            DTS:ObjectName="{DEE0833B-6679-42E1-A3BE-BC8974DF881F}">
             <DTS:ObjectData>
-              <ForEachFileEnumeratorProperties>
-                <FEFEProperty
-                  Folder="C:\" />
-                <FEFEProperty
-                  FileSpec="*.*" />
-                <FEFEProperty
-                  FileNameRetrievalType="0" />
-                <FEFEProperty
-                  Recurse="0" />
-              </ForEachFileEnumeratorProperties>
+              <FEEADO
+                EnumType="EnumerateRowsInFirstTable"
+                VarName="User::Data" />
             </DTS:ObjectData>
           </DTS:ForEachEnumerator>
           <DTS:Variables />
@@ -1515,10 +1513,10 @@
           <DTS:ForEachVariableMappings>
             <DTS:ForEachVariableMapping
               DTS:CreationName=""
-              DTS:DTSID="{4B0FA58C-BC62-476E-9550-DECC7E8C1707}"
-              DTS:ObjectName="{4B0FA58C-BC62-476E-9550-DECC7E8C1707}"
+              DTS:DTSID="{E0A0FC44-B29F-4AAB-8B43-564F2D0F18D2}"
+              DTS:ObjectName="{E0A0FC44-B29F-4AAB-8B43-564F2D0F18D2}"
               DTS:ValueIndex="0"
-              DTS:VariableName="User::Data" />
+              DTS:VariableName="User::StudentCode" />
           </DTS:ForEachVariableMappings>
         </DTS:Executable>
         <DTS:Executable
@@ -1616,33 +1614,21 @@
         <NodeLayout
           Size="128,42"
           Id="Package\Loading data\Set tables"
-          TopLeft="40,22" />
+          TopLeft="73,38" />
         <EdgeLayout
           Id="Package\Loading data.PrecedenceConstraints[Restricción]"
-          TopLeft="104,64">
+          TopLeft="136.25,80">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="31.5,70"
+              EndConnector="0,54"
               Start="0,0"
-              End="31.5,62.5">
+              End="0,46.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,31"
-                    Point2="0,35"
-                    Point3="4,35" />
-                  <mssgle:LineSegment
-                    End="27.5,35" />
-                  <mssgle:CubicBezierSegment
-                    Point1="27.5,35"
-                    Point2="31.5,35"
-                    Point3="31.5,39" />
-                  <mssgle:LineSegment
-                    End="31.5,62.5" />
+                    End="0,46.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1698,33 +1684,21 @@
         <NodeLayout
           Size="144,42"
           Id="Package\Not approved\Set MaxLoop"
-          TopLeft="68.8888888888889,6.77777777777779" />
+          TopLeft="91.8888888888889,50.7777777777778" />
         <EdgeLayout
           Id="Package\Not approved.PrecedenceConstraints[Restricción]"
-          TopLeft="140.888888888889,48.7777777777778">
+          TopLeft="161.944444444444,92.7777777777778">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="19.1111111111111,83.4444444444442"
+              EndConnector="0,39.4444444444442"
               Start="0,0"
-              End="19.1111111111111,75.9444444444442">
+              End="0,31.9444444444442">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,37.7222222222221" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,37.7222222222221"
-                    Point2="0,41.7222222222221"
-                    Point3="4,41.7222222222221" />
-                  <mssgle:LineSegment
-                    End="15.1111111111111,41.7222222222221" />
-                  <mssgle:CubicBezierSegment
-                    Point1="15.1111111111111,41.7222222222221"
-                    Point2="19.1111111111111,41.7222222222221"
-                    Point3="19.1111111111111,45.7222222222221" />
-                  <mssgle:LineSegment
-                    End="19.1111111111111,75.9444444444442" />
+                    End="0,31.9444444444442" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1739,7 +1713,7 @@
           PanelSize="309,439"
           Size="309,482"
           Id="Package\Not approved"
-          TopLeft="920,52" />
+          TopLeft="912,14" />
         <NodeLayout
           Size="149,42"
           Id="Package\Update grades\Contenedor de bucles Foreach\Update record"
@@ -1808,30 +1782,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 1]"
-          TopLeft="761,255.5">
+          TopLeft="761,255.25">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="159,37.5"
+              EndConnector="151,0"
               Start="0,0"
-              End="151.5,37.5">
+              End="143.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="75.5,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="75.5,0"
-                    Point2="79.5,0"
-                    Point3="79.5,4" />
-                  <mssgle:LineSegment
-                    End="79.5,33.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="79.5,33.5"
-                    Point2="79.5,37.5"
-                    Point3="83.5,37.5" />
-                  <mssgle:LineSegment
-                    End="151.5,37.5" />
+                    End="143.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1847,15 +1809,15 @@
     design-time-name="Package\Loading data\Data Flow Task">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="133,42"
-          Id="Package\Loading data\Data Flow Task\Row Count"
-          TopLeft="329.5,190.5" />
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="156,42"
           Id="Package\Loading data\Data Flow Task\Flat File Source"
           TopLeft="314,61" />
+        <NodeLayout
+          Size="133,42"
+          Id="Package\Loading data\Data Flow Task\Row Count"
+          TopLeft="329.5,190.5" />
         <NodeLayout
           Size="177,42"
           Id="Package\Loading data\Data Flow Task\OLE DB Destination"
@@ -1879,9 +1841,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-16.42453125,24.35107421875,32.8490625,9.7978515625"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -1903,9 +1863,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-16.42453125,35.10107421875,32.8490625,9.7978515625"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
